@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Infografis Isu dan Tantangan Penerapan SPM di Daerah</title>
+<style>
+:root {
+  --bg:#f5f7fb;
+  --ink:#172033;
+  --muted:#667085;
+  --line:#e5e7eb;
+  --navy:#063970;
+  --green:#0f766e;
+  --card:#ffffff;
+  --shadow:0 14px 35px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 0 0, rgba(37,99,235,.08), transparent 24rem),
+    radial-gradient(circle at 100% 0, rgba(15,118,110,.09), transparent 26rem),
+    var(--bg);
+  color:var(--ink);
+}
+.hero{
+  background:linear-gradient(135deg,#073b78 0%,#0b5a7b 55%,#0f766e 100%);
+  color:#fff;
+  padding:56px 24px 48px;
+  position:relative;
+  overflow:hidden;
+}
+.hero:before,.hero:after{
+  content:"";
+  position:absolute;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+}
+.hero:before{width:340px;height:340px;right:-130px;top:-130px}
+.hero:after{width:180px;height:180px;left:-60px;bottom:-85px}
+.hero-inner{max-width:1280px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 11px;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+h1{font-size:clamp(34px,5vw,64px);line-height:1.02;margin:18px 0 14px;max-width:980px}
+.hero p{max-width:840px;margin:0;font-size:17px;line-height:1.65;color:rgba(255,255,255,.88)}
+.hero-stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px}
+.hero-stat{padding:14px 18px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:18px;backdrop-filter:blur(8px)}
+.hero-stat b{display:block;font-size:24px}
+.hero-stat span{font-size:13px;color:rgba(255,255,255,.8)}
+main{max-width:1280px;margin:0 auto;padding:28px 24px 60px}
+.section-title{font-size:22px;margin:18px 0 14px}
+.summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.summary-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-top:4px solid var(--accent);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:var(--shadow);
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.summary-icon{width:46px;height:46px;border-radius:14px;background:color-mix(in srgb,var(--accent) 12%, white);display:grid;place-items:center;font-size:24px}
+.summary-number{font-size:26px;font-weight:800}
+.summary-label{font-size:13px;color:var(--muted);line-height:1.3}
+.controls{
+  margin:28px 0 20px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.control-label{font-size:12px;font-weight:800;color:#475467;text-transform:uppercase;letter-spacing:.08em;margin:2px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{
+  border:1px solid #d0d5dd;
+  background:#fff;
+  color:#344054;
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s ease;
+}
+.chip:hover{transform:translateY(-1px);border-color:#98a2b3}
+.chip.active{background:#0b4a76;color:#fff;border-color:#0b4a76}
+.region-chip.active{background:#0f766e;border-color:#0f766e}
+.result-row{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:12px 0 16px}
+.result-row strong{font-size:15px}
+.result-row span{font-size:13px;color:var(--muted)}
+.issue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.issue-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+  box-shadow:0 8px 24px rgba(15,23,42,.06);
+  transition:.2s ease;
+}
+.issue-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(15,23,42,.10)}
+.issue-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;flex-wrap:wrap}
+.field-pill,.region-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:800}
+.field-pill{background:color-mix(in srgb,var(--accent) 10%, white);color:var(--accent)}
+.region-pill{background:#f2f4f7;color:#475467}
+.issue-card h3{font-size:17px;margin:14px 0 8px}
+.issue-card p{font-size:14px;line-height:1.62;color:#475467;margin:0}
+.legend{
+  margin-top:28px;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:16px;
+}
+.note{
+  background:#0b4a76;
+  color:#fff;
+  border-radius:20px;
+  padding:20px;
+}
+.note h2{font-size:18px;margin:0 0 8px}
+.note p{margin:0;color:rgba(255,255,255,.86);font-size:14px;line-height:1.6}
+.method{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:20px;
+}
+.method h2{font-size:18px;margin:0 0 8px}
+.method p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
+.hidden{display:none!important}
+@media(max-width:1050px){
+  .summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .issue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:720px){
+  .hero{padding:42px 18px 36px}
+  main{padding:22px 16px 48px}
+  .summary-grid,.issue-grid,.legend{grid-template-columns:1fr}
+  .hero-stats{gap:10px}
+  .hero-stat{flex:1 1 42%}
+  .result-row{align-items:flex-start;flex-direction:column}
+}
+@media print{
+  body{background:#fff}
+  .controls{display:none}
+  .issue-grid{grid-template-columns:repeat(2,1fr)}
+  .issue-card{break-inside:avoid;box-shadow:none}
+  .hero{background:#073b78!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">FGD Monitoring & Evaluasi Penerapan SPM di Daerah</span>
+    <h1>Isu & Tantangan Penerapan Standar Pelayanan Minimal</h1>
+    <p>Ringkasan visual hasil FGD kewilayahan yang memetakan tantangan SPM menurut bidang, wilayah, dan daerah yang menyampaikan isu.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>6</b><span>Bidang SPM utama</span></div>
+      <div class="hero-stat"><b>3</b><span>Sub-urusan Trantibumlinmas</span></div>
+      <div class="hero-stat"><b>5</b><span>Wilayah FGD</span></div>
+      <div class="hero-stat"><b>59</b><span>Isu/temuan daerah</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <h2 class="section-title">Peta Isu per Bidang</h2>
+  <section class="summary-grid">
+    
+    <div class="summary-card" style="--accent:#2563eb">
+      <div class="summary-icon">🎓</div>
+      <div>
+        <div class="summary-number">11</div>
+        <div class="summary-label">Pendidikan</div>
+      </div>
+    </div>
+    
+    <div class="summary-card" style="--accent:#059669">
+      <div class="summary-icon">✚</div>
+      <div>
+        <div class="summary-number">11</div>
+        <div class="summary-label">Kesehatan</div>
+      </div>
+    </div>
+    
+    <div class="summary-card" style="--accent:#0284c7">
+      <div class="summary-icon">💧</div>
+      <div>
+        <div class="summary-number">9</div>
+        <div class="summary-label">Pekerjaan Umum</div>
+      </div>
+    </div>
+    
+    <div class="summary-card" style="--accent:#d97706">
+      <div class="summary-icon">⌂</div>
+      <div>
+        <div class="summary-number">9</div>
+        <div class="summary-label">Perumahan Rakyat</div>
+      </div>
+    </div>
+    
+    <div class="summary-card" style="--accent:#7c3aed">
+      <div class="summary-icon">🛡</div>
+      <div>
+        <div class="summary-number">2</div>
+        <div class="summary-label">Trantibumlinmas – Satpol PP</div>
+      </div>
+    </div>
+    
+    <div class="summary-card" style="--accent:#dc2626">
+      <div class="summary-icon">⚠</div>
+      <div>
+        <div class="summary-number">4</div>
+        <div class="summary-label">Trantibumlinmas – Bencana</div>
+      </div>
+    </div>
+    
+    <div class="summary-card" style="--accent:#ea580c">
+      <div class="summary-icon">🔥</div>
+      <div>
+        <div class="summary-number">2</div>
+        <div class="summary-label">Trantibumlinmas – Kebakaran</div>
+      </div>
+    </div>
+    
+    <div class="summary-card" style="--accent:#be185d">
+      <div class="summary-icon">🤝</div>
+      <div>
+        <div class="summary-number">11</div>
+        <div class="summary-label">Sosial</div>
+      </div>
+    </div>
+    
+  </section>
+
+  <section class="controls">
+    <div class="control-label">Filter Bidang SPM</div>
+    <div class="chips"><button class="chip active" data-filter-field="all">Semua Bidang</button><button class="chip" data-filter-field="Pendidikan">🎓 Pendidikan</button><button class="chip" data-filter-field="Kesehatan">✚ Kesehatan</button><button class="chip" data-filter-field="Pekerjaan Umum">💧 Pekerjaan Umum</button><button class="chip" data-filter-field="Perumahan Rakyat">⌂ Perumahan Rakyat</button><button class="chip" data-filter-field="Trantibumlinmas – Satpol PP">🛡 Trantibumlinmas – Satpol PP</button><button class="chip" data-filter-field="Trantibumlinmas – Bencana">⚠ Trantibumlinmas – Bencana</button><button class="chip" data-filter-field="Trantibumlinmas – Kebakaran">🔥 Trantibumlinmas – Kebakaran</button><button class="chip" data-filter-field="Sosial">🤝 Sosial</button></div>
+    <div class="control-label">Filter Wilayah FGD</div>
+    <div class="chips"><button class="chip region-chip active" data-filter-region="all">Semua Wilayah</button><button class="chip region-chip" data-filter-region="Sumatera">Sumatera</button><button class="chip region-chip" data-filter-region="Jawa">Jawa</button><button class="chip region-chip" data-filter-region="Kalimantan-Bali-Nusra">Kalimantan-Bali-Nusra</button><button class="chip region-chip" data-filter-region="Sulawesi">Sulawesi</button><button class="chip region-chip" data-filter-region="Maluku-Papua">Maluku-Papua</button></div>
+  </section>
+
+  <div class="result-row">
+    <strong id="result-title">Seluruh isu dan tantangan</strong>
+    <span id="result-count">59 temuan ditampilkan</span>
+  </div>
+
+  <section class="issue-grid" id="issue-grid">
+    
+    <article class="issue-card" data-region="Sumatera" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Sumatera</span>
+      </div>
+      <h3>Kabupaten Lampung Selatan</h3>
+      <p>Capaian pendidikan masih rendah karena Form 3/penetapan target belum diisi sehingga capaian yang sudah diinput ke e-SPM tidak dapat divalidasi; pergantian/mutasi personel dan keterbatasan SDM juga menghambat penginputan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sumatera" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Sumatera</span>
+      </div>
+      <h3>Provinsi Aceh</h3>
+      <p>Pendataan peserta didik/angka partisipasi sekolah belum komprehensif; angka partisipasi sempat terlihat rendah karena peserta didik tidak tercatat dalam data daerah sehingga perlu konsolidasi data Dinas Pendidikan, sekolah, Kementerian Agama, dan sumber data lainnya.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>DI Yogyakarta</h3>
+      <p>Keterbatasan data penduduk DIY yang berdomisili atau bersekolah di luar wilayah menyebabkan gambaran partisipasi pendidikan belum utuh; data yang dibutuhkan dari Rapor Pendidikan juga tidak seluruhnya tersedia secara rinci.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kota Yogyakarta</h3>
+      <p>Terdapat perbedaan capaian/data antara Rapor Pendidikan dan e-SPM, sebagian sumber data Rapor Pendidikan tidak dapat diakses, serta terdapat warga ber-KTP Kota Yogyakarta tetapi berdomisili di luar kota sehingga menyulitkan penentuan sasaran pendidikan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Provinsi Nusa Tenggara Timur</h3>
+      <p>Alokasi anggaran program pendidikan sudah tersedia, tetapi rincian belanja belum selalu sesuai dengan ketentuan teknis SPM; contoh kegiatan literasi masih memuat belanja rapat/perjalanan dinas yang belum secara langsung mendukung capaian literasi. Pemahaman OPD mengenai rincian belanja SPM dan formula costing juga masih terbatas.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Kabupaten Lombok Utara</h3>
+      <p>Kuantitas/kualitas SDM, pendanaan, dan ketersediaan sarana-prasarana masih menjadi tantangan umum penerapan SPM, termasuk bidang pendidikan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Sulawesi Tengah</h3>
+      <p>Walaupun capaian pendidikan relatif tinggi, daerah menilai masih terdapat persoalan dalam membaca capaian antarbidang karena perbedaan kemampuan data, penghitungan sasaran, kapasitas OPD, pembiayaan, dan pemahaman teknis.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Sulawesi Utara</h3>
+      <p>Penyusunan SK Gubernur tentang penetapan target SPM menjadi kendala dalam proses pengendalian penerapan SPM.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Gorontalo</h3>
+      <p>Data penerima layanan belum sepenuhnya terintegrasi dan mutakhir; sinkronisasi data, penghitungan target, kapasitas SDM pengelola, dan koordinasi provinsi–kabupaten/kota masih perlu diperkuat.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Maluku-Papua" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Provinsi Papua</h3>
+      <p>Wilayah perbatasan membutuhkan penguatan infrastruktur sekolah, SDM, konektivitas transportasi, serta layanan digital/telekomunikasi agar masyarakat di kampung-kampung kecil dapat mengakses pelayanan dasar.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Maluku-Papua" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Provinsi Papua Selatan</h3>
+      <p>Perpindahan penduduk adat dan perkawinan campur di kawasan perbatasan menimbulkan persoalan administrasi kependudukan; anak-anak dari keluarga yang tidak memiliki NIK menghadapi kendala mengakses pelayanan dasar, termasuk pendidikan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sumatera" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Sumatera</span>
+      </div>
+      <h3>Provinsi Lampung</h3>
+      <p>Keterbatasan kas/anggaran daerah menyebabkan sejumlah kegiatan kesehatan yang telah dilaksanakan belum dapat dibayarkan. Anggaran untuk penanganan KLB dan pelayanan kesehatan bagi masyarakat terdampak bencana juga dinilai sangat terbatas.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>DI Yogyakarta</h3>
+      <p>Anggaran kesehatan dari DAK belum dapat dicairkan pada TW I–II karena mekanisme pencairan yang rumit; target SPM kabupaten/kota juga sulit dicapai karena terdapat perbedaan/ketidaksesuaian pemahaman terhadap standar teknis layanan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kota Yogyakarta</h3>
+      <p>Target kesehatan dinilai tinggi; warga ber-KTP Kota Yogyakarta tetapi berdomisili di luar kota menyulitkan pendataan. Kesadaran masyarakat mengikuti Posyandu/Posbindu masih rendah, penetapan target 12 indikator membutuhkan perhitungan lebih presisi, dan data fasilitas kesehatan swasta belum optimal.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Kalimantan Barat</h3>
+      <p>Dalam kondisi bencana kabut asap, terdapat kebutuhan kejelasan penghitungan dan penggunaan tenaga kesehatan: apakah hanya SDM kewenangan provinsi atau dapat menggabungkan SDM kabupaten/kota hingga Puskesmas, mengingat pembagian kewenangan pelayanan berbeda.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Kabupaten Lombok Utara</h3>
+      <p>Jumlah tenaga kesehatan Puskesmas dinilai masih kurang dibandingkan jumlah penduduk; terdapat kesenjangan kebutuhan dan ketersediaan tenaga antar fasilitas kesehatan sehingga diperlukan pemetaan SDM dan sarpras.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Sulawesi Tengah</h3>
+      <p>Capaian kesehatan TW II sangat tertinggal dibanding pendidikan; daerah belum dapat memastikan apakah penyebab utamanya adalah data sasaran yang belum tersedia, masyarakat belum terlayani, keterbatasan anggaran, atau capaian yang belum diinput ke e-SPM.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Sulawesi Utara</h3>
+      <p>Capaian kesehatan masih rendah dan penerapan SPM terkendala proses penyusunan SK Gubernur tentang penetapan target.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Gorontalo</h3>
+      <p>Sinkronisasi data penerima layanan, pemenuhan target, kapasitas SDM pengelola dan koordinasi lintas OPD masih menjadi tantangan lintas SPM.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Maluku-Papua" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Provinsi Maluku</h3>
+      <p>Realisasi anggaran kesehatan sampai TW II 2026 belum berjalan; secara umum daerah menghadapi keterbatasan anggaran, SDM, sarpras, data, dan hambatan geografis kepulauan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Maluku-Papua" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Provinsi Maluku Utara</h3>
+      <p>Kondisi kepulauan membutuhkan model pelayanan kesehatan bergerak/mobile, termasuk pelayanan berbasis kapal/kapal cepat untuk menjangkau wilayah terpencil, terluar, dan terisolasi; biaya transportasi antarpulau juga tinggi.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Maluku-Papua" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Provinsi Papua Selatan</h3>
+      <p>Penduduk kawasan perbatasan tanpa NIK sulit memperoleh layanan kesehatan meskipun secara faktual tinggal dan beraktivitas di wilayah perbatasan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sumatera" data-field="Pekerjaan Umum">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#0284c7"><span class="field-icon">💧</span>Pekerjaan Umum</span>
+        <span class="region-pill">Sumatera</span>
+      </div>
+      <h3>Provinsi Lampung</h3>
+      <p>Penyediaan SPAM dan SPAL belum dapat dilaksanakan karena kebutuhan pembiayaan sangat besar dan tidak tersedia anggaran yang memadai di APBD; kegiatan selama beberapa tahun masih dominan pada pendataan/perencanaan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sumatera" data-field="Pekerjaan Umum">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#0284c7"><span class="field-icon">💧</span>Pekerjaan Umum</span>
+        <span class="region-pill">Sumatera</span>
+      </div>
+      <h3>Provinsi Aceh</h3>
+      <p>Keterbatasan anggaran masih menjadi kendala; pelaksanaan SPAM/SPAL masih berada pada tahapan persiapan/penyusunan DED.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Pekerjaan Umum">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#0284c7"><span class="field-icon">💧</span>Pekerjaan Umum</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kota Yogyakarta</h3>
+      <p>Penentuan sasaran belum seluruhnya berbasis by name by address; persepsi bahwa kualitas air PDAM kurang baik serta gangguan/kebocoran jaringan menurunkan minat masyarakat memasang sambungan. Tantangannya adalah meningkatkan cakupan rumah tangga sekaligus kualitas air.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Pekerjaan Umum">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#0284c7"><span class="field-icon">💧</span>Pekerjaan Umum</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Kabupaten Lombok Utara</h3>
+      <p>Keterbatasan pendanaan, kualitas/kuantitas SDM, serta sarana-prasarana menjadi hambatan umum dalam pemenuhan SPM, termasuk pekerjaan umum.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Pekerjaan Umum">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#0284c7"><span class="field-icon">💧</span>Pekerjaan Umum</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Provinsi Nusa Tenggara Timur</h3>
+      <p>Perbedaan metode costing antar kementerian teknis menyulitkan daerah menghitung kebutuhan riil dan mengalokasikan anggaran SPM secara tepat.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Pekerjaan Umum">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#0284c7"><span class="field-icon">💧</span>Pekerjaan Umum</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Sulawesi Tengah</h3>
+      <p>Capaian PU jauh lebih rendah dibanding pendidikan/Trantibumlinmas; daerah menilai perlu ditelusuri apakah penyebabnya berasal dari kemampuan data, penghitungan sasaran, kapasitas OPD, pembiayaan, pemahaman teknis, atau penginputan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Pekerjaan Umum">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#0284c7"><span class="field-icon">💧</span>Pekerjaan Umum</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Sulawesi Utara</h3>
+      <p>Capaian PU masih rendah dan pengendalian target terkendala proses penyusunan SK Gubernur penetapan target SPM.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Maluku-Papua" data-field="Pekerjaan Umum">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#0284c7"><span class="field-icon">💧</span>Pekerjaan Umum</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Provinsi Maluku</h3>
+      <p>SPAM/SPAL regional sulit diterapkan karena karakteristik kepulauan dan jarak antarkabupaten/kota sangat jauh; penyusunan dokumen/perencanaan pendukung juga membutuhkan biaya besar.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Maluku-Papua" data-field="Pekerjaan Umum">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#0284c7"><span class="field-icon">💧</span>Pekerjaan Umum</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Provinsi Maluku Utara</h3>
+      <p>Pembentukan jaringan SPAM/SPAL regional sulit karena wilayah terdiri atas pulau-pulau; akses antarkabupaten tidak mudah sehingga diperlukan pola kerja sama/pengelolaan yang lebih sesuai karakteristik wilayah.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sumatera" data-field="Perumahan Rakyat">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#d97706"><span class="field-icon">⌂</span>Perumahan Rakyat</span>
+        <span class="region-pill">Sumatera</span>
+      </div>
+      <h3>Provinsi Lampung</h3>
+      <p>SPM perumahan di tingkat provinsi sulit direalisasikan karena kejadian bencana/relokasi pada praktiknya banyak ditangani kabupaten/kota sehingga alokasi provinsi tidak mudah digunakan; terdapat ketidaksesuaian antara ketentuan dengan kondisi faktual daerah.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sumatera" data-field="Perumahan Rakyat">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#d97706"><span class="field-icon">⌂</span>Perumahan Rakyat</span>
+        <span class="region-pill">Sumatera</span>
+      </div>
+      <h3>Provinsi Aceh</h3>
+      <p>Keterbatasan anggaran menjadi kendala utama bidang perumahan rakyat.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Perumahan Rakyat">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#d97706"><span class="field-icon">⌂</span>Perumahan Rakyat</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>DI Yogyakarta</h3>
+      <p>Ketika tidak terjadi bencana maupun relokasi, aplikasi/perencanaan SPM menimbulkan persoalan karena kondisi nihil tersebut sulit direpresentasikan sebagai target/realisasi.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Perumahan Rakyat">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#d97706"><span class="field-icon">⌂</span>Perumahan Rakyat</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kota Yogyakarta</h3>
+      <p>Masih banyak RTLH belum terjangkau; terdapat persoalan legalitas/status tanah dan permukiman kumuh di bantaran sungai. Keterbatasan luas Kota Yogyakarta juga menyulitkan relokasi apabila terjadi bencana.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Perumahan Rakyat">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#d97706"><span class="field-icon">⌂</span>Perumahan Rakyat</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Kabupaten Lombok Utara</h3>
+      <p>Pembiayaan pemenuhan rumah tidak layak huni masih membutuhkan sumber di luar APBD; pemerintah daerah menggandeng dunia usaha melalui CSR untuk membantu pencapaian SPM perumahan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Perumahan Rakyat">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#d97706"><span class="field-icon">⌂</span>Perumahan Rakyat</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Provinsi Nusa Tenggara Timur</h3>
+      <p>Penetapan target pembangunan rumah bagi korban bencana belum merujuk pada dokumen Kajian Risiko Bencana (KRB), sehingga basis data/target lintas urusan belum sinkron.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Perumahan Rakyat">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#d97706"><span class="field-icon">⌂</span>Perumahan Rakyat</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Sulawesi Tengah</h3>
+      <p>Capaian perumahan jauh di bawah pendidikan/Trantibumlinmas; daerah melihat kemungkinan persoalan pada data, penghitungan sasaran, kapasitas OPD, pembiayaan, atau pemahaman teknis.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Perumahan Rakyat">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#d97706"><span class="field-icon">⌂</span>Perumahan Rakyat</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Sulawesi Utara</h3>
+      <p>Capaian perumahan masih sangat rendah; proses penyusunan SK Gubernur penetapan target SPM disebut sebagai salah satu kendala.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Maluku-Papua" data-field="Perumahan Rakyat">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#d97706"><span class="field-icon">⌂</span>Perumahan Rakyat</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Provinsi Maluku</h3>
+      <p>Konflik sosial antarkampung dapat mengakibatkan rumah terbakar dan tetap membutuhkan penanganan pemerintah, tetapi kerusakan akibat bencana sosial tidak dapat dilaporkan sebagai capaian SPM perumahan karena definisi operasional yang digunakan berfokus pada bencana alam.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Trantibumlinmas – Satpol PP">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#7c3aed"><span class="field-icon">🛡</span>Trantibumlinmas – Satpol PP</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>DI Yogyakarta</h3>
+      <p>Kesulitan mengalokasikan anggaran dan menetapkan target warga yang terdampak penegakan Perda; penegakan dilakukan secara humanis, tetapi tetap terdapat kemungkinan warga membutuhkan pengobatan/ganti rugi yang perlu diperhitungkan dalam SPM.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Trantibumlinmas – Satpol PP">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#7c3aed"><span class="field-icon">🛡</span>Trantibumlinmas – Satpol PP</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kota Yogyakarta</h3>
+      <p>Penentuan sasaran/populasi warga negara yang terdampak penegakan ketertiban umum tidak mudah dilakukan sehingga menyulitkan penetapan target 100 persen.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Trantibumlinmas – Bencana">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#dc2626"><span class="field-icon">⚠</span>Trantibumlinmas – Bencana</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kota Yogyakarta</h3>
+      <p>Kualitas Table Top Exercise dan simulasi lapangan masih perlu ditingkatkan; kolaborasi lintas sektor untuk kesiapsiagaan/penanganan bencana belum optimal; belum semua jenis bencana dalam KRB memiliki dokumen kontingensi dan yang tersedia baru untuk gempa bumi.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Trantibumlinmas – Bencana">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#dc2626"><span class="field-icon">⚠</span>Trantibumlinmas – Bencana</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Kota Kupang/Kabupaten Kupang</h3>
+      <p>Pelayanan informasi rawan bencana kepada warga yang bekerja/beraktivitas lintas batas administrasi sulit diklaim dan dilaporkan oleh BPBD kedua daerah karena mekanisme kerja sama antarwilayah belum diatur.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Trantibumlinmas – Bencana">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#dc2626"><span class="field-icon">⚠</span>Trantibumlinmas – Bencana</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Provinsi Nusa Tenggara Timur</h3>
+      <p>KRB belum digunakan sebagai basis data bersama untuk penetapan target bidang-bidang yang beririsan dengan kebencanaan, seperti kesehatan, perumahan, dan sosial.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Maluku-Papua" data-field="Trantibumlinmas – Bencana">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#dc2626"><span class="field-icon">⚠</span>Trantibumlinmas – Bencana</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Provinsi Papua</h3>
+      <p>BPBD kabupaten/kota mengalami keterbatasan dukungan anggaran dalam penyusunan KRB; tanpa dokumen tersebut, perencanaan dan pengukuran capaian SPM kebencanaan menjadi sulit.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Trantibumlinmas – Kebakaran">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#ea580c"><span class="field-icon">🔥</span>Trantibumlinmas – Kebakaran</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kota Yogyakarta</h3>
+      <p>Jumlah bangunan publik yang memenuhi standar penanganan kebakaran masih rendah dan rasio SDM pemadam kebakaran belum ideal.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Maluku-Papua" data-field="Trantibumlinmas – Kebakaran">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#ea580c"><span class="field-icon">🔥</span>Trantibumlinmas – Kebakaran</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Provinsi Papua/Mamberamo Raya</h3>
+      <p>Ketersediaan kendaraan pemadam kebakaran dan sarpras masih sangat terbatas/tidak tersedia, sehingga pencapaian standar dan pengukuran capaian layanan kebakaran sulit dilakukan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sumatera" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Sumatera</span>
+      </div>
+      <h3>Provinsi Lampung</h3>
+      <p>Target penerima layanan di panti jauh lebih besar dibanding kapasitas fiskal yang tersedia; efisiensi/perubahan prioritas anggaran menyebabkan hanya sebagian sasaran dapat dilayani dan kondisi faktual ini tidak selalu tergambar dalam aplikasi.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sumatera" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Sumatera</span>
+      </div>
+      <h3>Kabupaten Lampung Selatan</h3>
+      <p>Capaian sosial masih nol pada TW II karena kegiatan baru direncanakan dilaksanakan pada TW III.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sumatera" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Sumatera</span>
+      </div>
+      <h3>Kabupaten Way Kanan</h3>
+      <p>Capaian sosial masih rendah karena kegiatan belum selesai dilaksanakan dan diharapkan meningkat setelah pelaksanaan TW III.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>DI Yogyakarta</h3>
+      <p>PPKS yang sudah diketahui daerah asalnya tidak selalu diterima kembali oleh daerah asal karena tidak memiliki keluarga/aset/penanggung jawab atau dianggap bukan penduduk asli.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kota Yogyakarta</h3>
+      <p>Mobilitas anak jalanan, gelandangan, dan pengemis tinggi sehingga sulit dijangkau; kasus keterlantaran tidak dapat diprediksi; keluarga lansia terlantar tidak selalu menerima reunifikasi; belum tersedia shelter memadai untuk ODGJ/orang terlantar/gepeng dan kapasitas rehabilitasi/assessment terbatas.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Provinsi Nusa Tenggara Timur</h3>
+      <p>Terdapat ketidaksesuaian indikator layanan gelandangan/pengemis di dalam panti dengan kondisi daerah karena secara faktual hampir tidak ditemukan gepeng; mekanisme pembuktian kondisi nihil sempat menjadi hambatan pencapaian SPM sosial.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Kalimantan-Bali-Nusra" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Provinsi Nusa Tenggara Timur</h3>
+      <p>Layanan sosial pascabencana belum sepenuhnya menggunakan KRB sebagai basis penentuan target lintas urusan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Sulawesi Tengah</h3>
+      <p>Capaian sosial masih jauh di bawah pendidikan/Trantibumlinmas dan akar masalah belum teridentifikasi secara pasti; kemungkinan terkait data sasaran, kapasitas OPD, pembiayaan, pemahaman teknis, atau penginputan capaian.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Sulawesi Utara</h3>
+      <p>Capaian sosial masih rendah dan proses penyusunan SK Gubernur penetapan target SPM menjadi kendala pengendalian.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Sulawesi" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Provinsi Gorontalo</h3>
+      <p>Data penerima layanan belum seluruhnya mutakhir/terintegrasi, terdapat kesenjangan antara warga yang wajib dilayani dan yang telah menerima layanan sesuai standar, serta efisiensi anggaran dan kapasitas SDM masih menjadi tantangan.</p>
+    </article>
+    
+    <article class="issue-card" data-region="Maluku-Papua" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Provinsi Maluku</h3>
+      <p>Anggaran SPM sosial dinilai sangat minim dan secara umum terkendala anggaran, data, SDM, sarpras, serta geografis kepulauan. Daerah juga menilai bidang SPM di luar pendidikan, kesehatan, dan PU rentan tidak menjadi prioritas saat penetapan pagu.</p>
+    </article>
+    
+  </section>
+
+  <section class="legend">
+    <div class="note">
+      <h2>Catatan penting</h2>
+      <p>Isu ditampilkan berdasarkan daerah yang secara eksplisit menyampaikannya dalam FGD. Karena itu, tidak semua wilayah memiliki isu pada seluruh sub-urusan Trantibumlinmas.</p>
+    </div>
+    <div class="method">
+      <h2>Cara membaca</h2>
+      <p>Pilih <b>Bidang SPM</b> dan/atau <b>Wilayah FGD</b> untuk mempersempit tampilan. Setiap kartu menampilkan daerah serta isu/tantangan utama yang disampaikan.</p>
+    </div>
+  </section>
+</main>
+
+<footer>Infografis SPM • Ringkasan hasil FGD kewilayahan</footer>
+
+<script>
+const fieldBtns = [...document.querySelectorAll('[data-filter-field]')];
+const regionBtns = [...document.querySelectorAll('[data-filter-region]')];
+const cards = [...document.querySelectorAll('.issue-card')];
+let field = 'all';
+let region = 'all';
+
+function update() {
+  let shown = 0;
+  cards.forEach(card => {
+    const okField = field === 'all' || card.dataset.field === field;
+    const okRegion = region === 'all' || card.dataset.region === region;
+    const visible = okField && okRegion;
+    card.classList.toggle('hidden', !visible);
+    if (visible) shown++;
+  });
+  document.getElementById('result-count').textContent = shown + ' temuan ditampilkan';
+  const parts = [];
+  if (field !== 'all') parts.push(field);
+  if (region !== 'all') parts.push(region);
+  document.getElementById('result-title').textContent = parts.length ? parts.join(' • ') : 'Seluruh isu dan tantangan';
+}
+
+fieldBtns.forEach(btn => btn.addEventListener('click', () => {
+  fieldBtns.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  field = btn.dataset.filterField;
+  update();
+}));
+
+regionBtns.forEach(btn => btn.addEventListener('click', () => {
+  regionBtns.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  region = btn.dataset.filterRegion;
+  update();
+}));
+</script>
+</body>
+</html>
