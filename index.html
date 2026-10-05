@@ -119,6 +119,20 @@ main{max-width:1280px;margin:0 auto;padding:28px 24px 60px}
 .region-pill{background:#f2f4f7;color:#475467}
 .issue-card h3{font-size:17px;margin:14px 0 8px}
 .issue-card p{font-size:14px;line-height:1.62;color:#475467;margin:0}
+.source-note{
+  margin-top:12px;
+  padding-top:10px;
+  border-top:1px dashed #e4e7ec;
+  color:#98a2b3;
+  font-size:11px;
+  line-height:1.4;
+  font-weight:650;
+}
+.cross-card{border-top:4px solid #475467}
+.cross-card-list{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:10px}
+.cross-card-list li{background:#f8fafc;border:1px solid #eaecf0;border-radius:13px;padding:10px 11px}
+.cross-card-list strong{display:block;font-size:12px;color:#344054;margin-bottom:4px}
+.cross-card-list span{display:block;color:#667085;font-size:12px;line-height:1.5}
 .legend{
   margin-top:28px;
   display:grid;
@@ -174,19 +188,19 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
       <div class="hero-stat"><b>6</b><span>Bidang SPM utama</span></div>
       <div class="hero-stat"><b>3</b><span>Sub-urusan Trantibumlinmas</span></div>
       <div class="hero-stat"><b>5</b><span>Wilayah FGD</span></div>
-      <div class="hero-stat"><b>59</b><span>Isu/temuan daerah</span></div>
+      <div class="hero-stat"><b>73</b><span>Kartu isu: 68 bidang + 5 lintas</span></div>
     </div>
   </div>
 </header>
 
 <main>
-  <h2 class="section-title">Peta Isu per Bidang</h2>
+  <h2 class="section-title">Peta Isu per Bidang &amp; Lintas Bidang</h2>
   <section class="summary-grid">
     
     <div class="summary-card" style="--accent:#2563eb">
       <div class="summary-icon">🎓</div>
       <div>
-        <div class="summary-number">11</div>
+        <div class="summary-number">13</div>
         <div class="summary-label">Pendidikan</div>
       </div>
     </div>
@@ -194,7 +208,7 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
     <div class="summary-card" style="--accent:#059669">
       <div class="summary-icon">✚</div>
       <div>
-        <div class="summary-number">11</div>
+        <div class="summary-number">13</div>
         <div class="summary-label">Kesehatan</div>
       </div>
     </div>
@@ -210,7 +224,7 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
     <div class="summary-card" style="--accent:#d97706">
       <div class="summary-icon">⌂</div>
       <div>
-        <div class="summary-number">9</div>
+        <div class="summary-number">10</div>
         <div class="summary-label">Perumahan Rakyat</div>
       </div>
     </div>
@@ -218,7 +232,7 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
     <div class="summary-card" style="--accent:#7c3aed">
       <div class="summary-icon">🛡</div>
       <div>
-        <div class="summary-number">2</div>
+        <div class="summary-number">3</div>
         <div class="summary-label">Trantibumlinmas – Satpol PP</div>
       </div>
     </div>
@@ -226,7 +240,7 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
     <div class="summary-card" style="--accent:#dc2626">
       <div class="summary-icon">⚠</div>
       <div>
-        <div class="summary-number">4</div>
+        <div class="summary-number">5</div>
         <div class="summary-label">Trantibumlinmas – Bencana</div>
       </div>
     </div>
@@ -234,7 +248,7 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
     <div class="summary-card" style="--accent:#ea580c">
       <div class="summary-icon">🔥</div>
       <div>
-        <div class="summary-number">2</div>
+        <div class="summary-number">3</div>
         <div class="summary-label">Trantibumlinmas – Kebakaran</div>
       </div>
     </div>
@@ -242,8 +256,16 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
     <div class="summary-card" style="--accent:#be185d">
       <div class="summary-icon">🤝</div>
       <div>
-        <div class="summary-number">11</div>
+        <div class="summary-number">12</div>
         <div class="summary-label">Sosial</div>
+      </div>
+    </div>
+
+    <div class="summary-card" style="--accent:#475467">
+      <div class="summary-icon">🔗</div>
+      <div>
+        <div class="summary-number">5</div>
+        <div class="summary-label">Isu Lintas Bidang</div>
       </div>
     </div>
     
@@ -251,14 +273,14 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
 
   <section class="controls">
     <div class="control-label">Filter Bidang SPM</div>
-    <div class="chips"><button class="chip active" data-filter-field="all">Semua Bidang</button><button class="chip" data-filter-field="Pendidikan">🎓 Pendidikan</button><button class="chip" data-filter-field="Kesehatan">✚ Kesehatan</button><button class="chip" data-filter-field="Pekerjaan Umum">💧 Pekerjaan Umum</button><button class="chip" data-filter-field="Perumahan Rakyat">⌂ Perumahan Rakyat</button><button class="chip" data-filter-field="Trantibumlinmas – Satpol PP">🛡 Trantibumlinmas – Satpol PP</button><button class="chip" data-filter-field="Trantibumlinmas – Bencana">⚠ Trantibumlinmas – Bencana</button><button class="chip" data-filter-field="Trantibumlinmas – Kebakaran">🔥 Trantibumlinmas – Kebakaran</button><button class="chip" data-filter-field="Sosial">🤝 Sosial</button></div>
+    <div class="chips"><button class="chip active" data-filter-field="all">Semua Bidang</button><button class="chip" data-filter-field="Pendidikan">🎓 Pendidikan</button><button class="chip" data-filter-field="Kesehatan">✚ Kesehatan</button><button class="chip" data-filter-field="Pekerjaan Umum">💧 Pekerjaan Umum</button><button class="chip" data-filter-field="Perumahan Rakyat">⌂ Perumahan Rakyat</button><button class="chip" data-filter-field="Trantibumlinmas – Satpol PP">🛡 Trantibumlinmas – Satpol PP</button><button class="chip" data-filter-field="Trantibumlinmas – Bencana">⚠ Trantibumlinmas – Bencana</button><button class="chip" data-filter-field="Trantibumlinmas – Kebakaran">🔥 Trantibumlinmas – Kebakaran</button><button class="chip" data-filter-field="Sosial">🤝 Sosial</button><button class="chip" data-filter-field="Isu Lintas Bidang">🔗 Isu Lintas Bidang</button></div>
     <div class="control-label">Filter Wilayah FGD</div>
     <div class="chips"><button class="chip region-chip active" data-filter-region="all">Semua Wilayah</button><button class="chip region-chip" data-filter-region="Sumatera">Sumatera</button><button class="chip region-chip" data-filter-region="Jawa">Jawa</button><button class="chip region-chip" data-filter-region="Kalimantan-Bali-Nusra">Kalimantan-Bali-Nusra</button><button class="chip region-chip" data-filter-region="Sulawesi">Sulawesi</button><button class="chip region-chip" data-filter-region="Maluku-Papua">Maluku-Papua</button></div>
   </section>
 
   <div class="result-row">
     <strong id="result-title">Seluruh isu dan tantangan</strong>
-    <span id="result-count">59 temuan ditampilkan</span>
+    <span id="result-count">73 temuan ditampilkan</span>
   </div>
 
   <section class="issue-grid" id="issue-grid">
@@ -362,6 +384,27 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
       <p>Perpindahan penduduk adat dan perkawinan campur di kawasan perbatasan menimbulkan persoalan administrasi kependudukan; anak-anak dari keluarga yang tidak memiliki NIK menghadapi kendala mengakses pelayanan dasar, termasuk pendidikan.</p>
     </article>
     
+
+    <article class="issue-card" data-region="Jawa" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kabupaten Gunungkidul</h3>
+      <p>Capaian SPM Pendidikan 2025 masih 92,71%. Layanan Si-BONA baru menjangkau 8 dari 18 kapanewon; beasiswa bagi siswa rentan putus sekolah belum menjangkau seluruh sasaran; masih terdapat anak tidak sekolah. Tantangan lain meliputi ketimpangan sarpras sekolah negeri-swasta, kebutuhan pemerataan guru dan tenaga kependidikan, data sasaran yang belum sepenuhnya terintegrasi, serta keterbatasan fiskal daerah.</p>
+      <div class="source-note">Sumber tambahan: Materi SPM Kabupaten Gunungkidul</div>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Pendidikan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#2563eb"><span class="field-icon">🎓</span>Pendidikan</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kabupaten Kulon Progo</h3>
+      <p>Keterbatasan pendataan penduduk DIY yang berdomisili dan/atau bersekolah di luar DIY menyulitkan penyusunan gambaran partisipasi pendidikan yang utuh. Selain itu, tidak seluruh data yang dibutuhkan daerah tersedia secara rinci dalam Rapor Pendidikan.</p>
+      <div class="source-note">Sumber tambahan: Identifikasi Permasalahan Penerapan SPM Kabupaten Kulon Progo</div>
+    </article>
+    
     <article class="issue-card" data-region="Sumatera" data-field="Kesehatan">
       <div class="issue-top">
         <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
@@ -459,6 +502,27 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
       </div>
       <h3>Provinsi Papua Selatan</h3>
       <p>Penduduk kawasan perbatasan tanpa NIK sulit memperoleh layanan kesehatan meskipun secara faktual tinggal dan beraktivitas di wilayah perbatasan.</p>
+    </article>
+    
+
+    <article class="issue-card" data-region="Jawa" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kabupaten Gunungkidul</h3>
+      <p>Keterbatasan anggaran dan SDM belum sebanding dengan meningkatnya beban pelayanan. Belum tersedia instrumen baku untuk menghitung kebutuhan riil berdasarkan beban kerja dan kemampuan anggaran. Kondisi geografis yang luas menyulitkan jangkauan layanan; partisipasi masyarakat masih perlu ditingkatkan; aplikasi serta data Puskesmas, rumah sakit, dan fasilitas kesehatan swasta juga belum terintegrasi sepenuhnya.</p>
+      <div class="source-note">Sumber tambahan: Materi SPM Kabupaten Gunungkidul</div>
+    </article>
+    
+    <article class="issue-card" data-region="Jawa" data-field="Kesehatan">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#059669"><span class="field-icon">✚</span>Kesehatan</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kabupaten Kulon Progo</h3>
+      <p>Terdapat kekeliruan penafsiran dan penyajian target SDM kesehatan dalam SK Bupati tentang Target dan Perubahan Target SPM 2025. Target menggunakan angka kebutuhan ideal berdasarkan analisis beban kerja, sehingga pemenuhannya tidak realistis untuk jangka pendek.</p>
+      <div class="source-note">Sumber tambahan: Identifikasi Permasalahan Penerapan SPM Kabupaten Kulon Progo</div>
     </article>
     
     <article class="issue-card" data-region="Sumatera" data-field="Pekerjaan Umum">
@@ -623,6 +687,17 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
       <p>Konflik sosial antarkampung dapat mengakibatkan rumah terbakar dan tetap membutuhkan penanganan pemerintah, tetapi kerusakan akibat bencana sosial tidak dapat dilaporkan sebagai capaian SPM perumahan karena definisi operasional yang digunakan berfokus pada bencana alam.</p>
     </article>
     
+
+    <article class="issue-card" data-region="Jawa" data-field="Perumahan Rakyat">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#d97706"><span class="field-icon">⌂</span>Perumahan Rakyat</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kabupaten Kulon Progo</h3>
+      <p>Ketika tidak terdapat bencana dan tidak terdapat relokasi, sistem/perencanaan SPM tidak memperbolehkan pengisian 0, tanda “-”, atau nihil meskipun secara faktual memang tidak terdapat sasaran.</p>
+      <div class="source-note">Sumber tambahan: Identifikasi Permasalahan Penerapan SPM Kabupaten Kulon Progo</div>
+    </article>
+    
     <article class="issue-card" data-region="Jawa" data-field="Trantibumlinmas – Satpol PP">
       <div class="issue-top">
         <span class="field-pill" style="--accent:#7c3aed"><span class="field-icon">🛡</span>Trantibumlinmas – Satpol PP</span>
@@ -639,6 +714,17 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
       </div>
       <h3>Kota Yogyakarta</h3>
       <p>Penentuan sasaran/populasi warga negara yang terdampak penegakan ketertiban umum tidak mudah dilakukan sehingga menyulitkan penetapan target 100 persen.</p>
+    </article>
+    
+
+    <article class="issue-card" data-region="Jawa" data-field="Trantibumlinmas – Satpol PP">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#7c3aed"><span class="field-icon">🛡</span>Trantibumlinmas – Satpol PP</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kabupaten Kulon Progo</h3>
+      <p>Pengadaan kendaraan pendukung penegakan Perda terkena efisiensi anggaran, sementara target SPM tidak dapat lagi disesuaikan. Daerah juga mengalami kesulitan mengalokasikan anggaran untuk warga terdampak karena penegakan Perda/Perkada dilakukan secara humanis sehingga tidak terdapat warga yang membutuhkan pengobatan maupun ganti rugi.</p>
+      <div class="source-note">Sumber tambahan: Identifikasi Permasalahan Penerapan SPM Kabupaten Kulon Progo</div>
     </article>
     
     <article class="issue-card" data-region="Jawa" data-field="Trantibumlinmas – Bencana">
@@ -677,6 +763,17 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
       <p>BPBD kabupaten/kota mengalami keterbatasan dukungan anggaran dalam penyusunan KRB; tanpa dokumen tersebut, perencanaan dan pengukuran capaian SPM kebencanaan menjadi sulit.</p>
     </article>
     
+
+    <article class="issue-card" data-region="Jawa" data-field="Trantibumlinmas – Bencana">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#dc2626"><span class="field-icon">⚠</span>Trantibumlinmas – Bencana</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kabupaten Gunungkidul</h3>
+      <p>Baru 91 dari 144 kalurahan yang telah menjadi Kalurahan Tangguh Bencana; belum seluruh satuan pendidikan menjadi SPAB; sarpras penanggulangan bencana dan tenaga bersertifikat masih terbatas; sistem peringatan dini belum optimal; serta baru tersedia 7 dokumen rencana kontinjensi dari 12 potensi bencana.</p>
+      <div class="source-note">Sumber tambahan: Materi SPM Kabupaten Gunungkidul</div>
+    </article>
+    
     <article class="issue-card" data-region="Jawa" data-field="Trantibumlinmas – Kebakaran">
       <div class="issue-top">
         <span class="field-pill" style="--accent:#ea580c"><span class="field-icon">🔥</span>Trantibumlinmas – Kebakaran</span>
@@ -693,6 +790,17 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
       </div>
       <h3>Provinsi Papua/Mamberamo Raya</h3>
       <p>Ketersediaan kendaraan pemadam kebakaran dan sarpras masih sangat terbatas/tidak tersedia, sehingga pencapaian standar dan pengukuran capaian layanan kebakaran sulit dilakukan.</p>
+    </article>
+    
+
+    <article class="issue-card" data-region="Jawa" data-field="Trantibumlinmas – Kebakaran">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#ea580c"><span class="field-icon">🔥</span>Trantibumlinmas – Kebakaran</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kabupaten Gunungkidul</h3>
+      <p>Wilayah yang terdiri dari 18 kapanewon baru didukung 2 pos pemadam dan 4 armada. Keterbatasan jumlah pos, armada, SDM, sarpras, serta luas cakupan layanan menyebabkan waktu tempuh ke lokasi kejadian berpotensi melebihi standar response time 15 menit, terutama di wilayah pinggiran.</p>
+      <div class="source-note">Sumber tambahan: Materi SPM Kabupaten Gunungkidul</div>
     </article>
     
     <article class="issue-card" data-region="Sumatera" data-field="Sosial">
@@ -794,21 +902,82 @@ footer{text-align:center;color:#98a2b3;font-size:12px;padding:22px}
       <p>Anggaran SPM sosial dinilai sangat minim dan secara umum terkendala anggaran, data, SDM, sarpras, serta geografis kepulauan. Daerah juga menilai bidang SPM di luar pendidikan, kesehatan, dan PU rentan tidak menjadi prioritas saat penetapan pagu.</p>
     </article>
     
+    <article class="issue-card" data-region="Jawa" data-field="Sosial">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#be185d"><span class="field-icon">🤝</span>Sosial</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Kabupaten Gunungkidul</h3>
+      <p>Walaupun capaian SPM Sosial 2025 telah mencapai 100%, keberlanjutan kualitas pelayanan menghadapi tantangan berupa dinamika data sasaran yang sangat cepat, keterbatasan jumlah dan kapasitas SDM kesejahteraan sosial, keterbatasan kemampuan anggaran daerah, serta meningkatnya kompleksitas permasalahan sosial.</p>
+      <div class="source-note">Sumber tambahan: Materi SPM Kabupaten Gunungkidul</div>
+    </article>
+    
+
+    <article class="issue-card cross-card" data-region="Sumatera" data-field="Isu Lintas Bidang">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#475467"><span class="field-icon">🔗</span>Isu Lintas Bidang</span>
+        <span class="region-pill">Sumatera</span>
+      </div>
+      <h3>Sumatera</h3>
+      <ul class="cross-card-list"><li><strong>Provinsi Lampung</strong><span>Anggaran dan realisasi dalam e-SPM belum selalu menggambarkan kondisi faktual; anggaran SPM rentan berubah karena efisiensi/refocusing dan perubahan prioritas.</span></li><li><strong>Provinsi Lampung</strong><span>Penetapan target belum selalu mengikuti empat tahapan SPM; masih terdapat perbedaan pemahaman mengenai target penerima, mutu layanan, dan data capaian triwulanan.</span></li><li><strong>Provinsi Lampung</strong><span>SDM pengelola SPM terbatas, sering mengalami mutasi/rotasi, dan kekurangan personel dari tahap perencanaan sampai pelaporan.</span></li><li><strong>Lingkup Sumatera</strong><span>Kualitas data dan sistem pembiayaan menjadi isu kunci; kebutuhan pelayanan berbiaya besar tidak selalu sejalan dengan kapasitas fiskal daerah.</span></li></ul>
+      <div class="source-note">Sumber: Transkrip FGD Wilayah Sumatera</div>
+    </article>
+
+    <article class="issue-card cross-card" data-region="Jawa" data-field="Isu Lintas Bidang">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#475467"><span class="field-icon">🔗</span>Isu Lintas Bidang</span>
+        <span class="region-pill">Jawa</span>
+      </div>
+      <h3>Jawa</h3>
+      <ul class="cross-card-list"><li><strong>DI Yogyakarta</strong><span>Keterbatasan kemampuan keuangan daerah, perbedaan hasil penghitungan/pelaporan e-SPM, dan kebutuhan dukungan anggaran pusat masih menjadi isu tata kelola.</span></li><li><strong>DI Yogyakarta</strong><span>Tim penerapan SPM menghadapi keterbatasan waktu dan personel karena satu orang mengampu banyak tugas; penguatan kapasitas SDM dan harmonisasi regulasi teknis masih dibutuhkan.</span></li><li><strong>Kabupaten Kulon Progo</strong><span>Ruang fiskal terbatas, data penerima layanan belum akurat/terintegrasi, sarpras belum memadai, tagging anggaran masih sulit, dan sebagian data e-SPM harus diinput ulang setiap triwulan.</span></li><li><strong>Kabupaten Gunungkidul</strong><span>Keterbatasan fiskal, ketersediaan SDM, serta sarana-prasarana menjadi tantangan umum untuk memenuhi seluruh indikator SPM.</span></li></ul>
+      <div class="source-note">Sumber: Transkrip FGD Wilayah Jawa; Materi Gunungkidul; Identifikasi Permasalahan Kulon Progo</div>
+    </article>
+
+    <article class="issue-card cross-card" data-region="Kalimantan-Bali-Nusra" data-field="Isu Lintas Bidang">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#475467"><span class="field-icon">🔗</span>Isu Lintas Bidang</span>
+        <span class="region-pill">Kalimantan-Bali-Nusra</span>
+      </div>
+      <h3>Kalimantan-Bali-Nusra</h3>
+      <ul class="cross-card-list"><li><strong>Kabupaten Lombok Utara</strong><span>Kuantitas/kualitas SDM, pendanaan, dan sarana-prasarana menjadi hambatan umum penerapan SPM pada berbagai bidang.</span></li><li><strong>Provinsi Nusa Tenggara Timur</strong><span>Belum ada formula costing yang seragam; rincian belanja OPD belum selalu sesuai standar teknis sehingga kebutuhan riil SPM sulit dihitung dan diterjemahkan ke anggaran.</span></li><li><strong>Provinsi Nusa Tenggara Timur</strong><span>Mekanisme kerja sama antar daerah untuk layanan lintas batas belum jelas, dan KRB belum konsisten dipakai sebagai basis target lintas urusan.</span></li><li><strong>Kalimantan Barat</strong><span>Kebutuhan pemenuhan SPM belum sepenuhnya tercermin dalam dukungan transfer/anggaran, sementara penduduk tersebar pada wilayah yang sangat luas sehingga biaya pelayanan per sasaran lebih tinggi.</span></li></ul>
+      <div class="source-note">Sumber: Transkrip FGD Wilayah Kalimantan–Bali–Nusra</div>
+    </article>
+
+    <article class="issue-card cross-card" data-region="Sulawesi" data-field="Isu Lintas Bidang">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#475467"><span class="field-icon">🔗</span>Isu Lintas Bidang</span>
+        <span class="region-pill">Sulawesi</span>
+      </div>
+      <h3>Sulawesi</h3>
+      <ul class="cross-card-list"><li><strong>Provinsi Gorontalo</strong><span>Data penerima layanan belum sepenuhnya mutakhir/terintegrasi; terdapat kesenjangan sasaran dan penerima layanan; integrasi SPM ke perencanaan-penganggaran masih perlu diperkuat.</span></li><li><strong>Provinsi Gorontalo</strong><span>Koordinasi lintas OPD serta provinsi–kabupaten/kota, kapasitas SDM pengelola, dampak mutasi personel, dan tindak lanjut hasil monitoring masih menjadi tantangan.</span></li><li><strong>Provinsi Sulawesi Tengah</strong><span>Kesenjangan capaian antarurusan sangat besar dan diduga berkaitan dengan perbedaan kemampuan data, penghitungan sasaran, kapasitas perangkat daerah, pembiayaan, dan pemahaman teknis.</span></li><li><strong>Provinsi Sulawesi Utara</strong><span>Proses penyusunan SK Gubernur penetapan target SPM menjadi isu pengendalian yang berdampak pada lebih dari satu bidang.</span></li></ul>
+      <div class="source-note">Sumber: Transkrip FGD Wilayah Sulawesi</div>
+    </article>
+
+    <article class="issue-card cross-card" data-region="Maluku-Papua" data-field="Isu Lintas Bidang">
+      <div class="issue-top">
+        <span class="field-pill" style="--accent:#475467"><span class="field-icon">🔗</span>Isu Lintas Bidang</span>
+        <span class="region-pill">Maluku-Papua</span>
+      </div>
+      <h3>Maluku-Papua</h3>
+      <ul class="cross-card-list"><li><strong>Provinsi Maluku</strong><span>Data, SDM, anggaran, sarpras, dan karakter geografis kepulauan menjadi hambatan lintas bidang; realisasi anggaran beberapa urusan juga masih sangat rendah.</span></li><li><strong>Provinsi Maluku</strong><span>Bidang SPM di luar pendidikan, kesehatan, dan PU dinilai lebih rentan terpinggirkan saat penetapan pagu karena tidak seluruh bidang memiliki mandatory spending.</span></li><li><strong>Provinsi Maluku Utara</strong><span>Karakter kepulauan membutuhkan model mobile service; banyak wilayah terluar masih mengalami keterbatasan konektivitas yang menghambat pelayanan, koordinasi, dan pelaporan.</span></li><li><strong>Provinsi Papua</strong><span>Infrastruktur pelayanan dasar, ketersediaan SDM, akses transportasi, dan konektivitas digital/telekomunikasi menjadi kebutuhan afirmatif untuk menjangkau kampung terpencil.</span></li><li><strong>Provinsi Papua Selatan</strong><span>Mobilitas lintas batas dan persoalan dokumen kependudukan/NIK memengaruhi akses masyarakat ke lebih dari satu jenis pelayanan dasar.</span></li></ul>
+      <div class="source-note">Sumber: Transkrip FGD Wilayah Maluku–Papua</div>
+    </article>
+
   </section>
 
   <section class="legend">
     <div class="note">
       <h2>Catatan penting</h2>
-      <p>Isu ditampilkan berdasarkan daerah yang secara eksplisit menyampaikannya dalam FGD. Karena itu, tidak semua wilayah memiliki isu pada seluruh sub-urusan Trantibumlinmas.</p>
+      <p>Isu ditampilkan berdasarkan transkrip FGD dan tambahan materi tertulis daerah. “Isu Lintas Bidang” kini menjadi kategori/filter tersendiri dan hanya memuat tantangan yang memengaruhi lebih dari satu urusan atau tata kelola SPM secara keseluruhan.</p>
     </div>
     <div class="method">
       <h2>Cara membaca</h2>
-      <p>Pilih <b>Bidang SPM</b> dan/atau <b>Wilayah FGD</b> untuk mempersempit tampilan. Setiap kartu menampilkan daerah serta isu/tantangan utama yang disampaikan.</p>
+      <p>Pilih <b>Bidang SPM</b>, <b>Isu Lintas Bidang</b>, dan/atau <b>Wilayah FGD</b> untuk mempersempit tampilan. Pada kartu lintas bidang, nama daerah tetap dicantumkan agar asal isu dapat ditelusuri.</p>
     </div>
   </section>
 </main>
 
-<footer>Infografis SPM • Ringkasan hasil FGD kewilayahan</footer>
+<footer>Infografis SPM • Ringkasan hasil FGD kewilayahan & materi tertulis daerah</footer>
 
 <script>
 const fieldBtns = [...document.querySelectorAll('[data-filter-field]')];
