@@ -26,6 +26,19 @@ main{max-width:1280px;margin:auto;padding:24px}.selector{background:#fff;border:
 .bar-list{display:grid;gap:10px}.bar-row{display:grid;grid-template-columns:minmax(150px,1.4fr) 1fr 62px;gap:9px;align-items:center}.bar-label{font-size:12px;color:#344054}.track{height:11px;background:#eef2f6;border-radius:99px;overflow:hidden}.fill{height:100%;background:#0f766e;border-radius:99px}.value{font-size:11px;font-weight:900;text-align:right;color:#475467}
 .rank-list{display:grid;gap:8px}.rank{display:flex;justify-content:space-between;gap:12px;padding:9px 10px;background:#f8fafc;border-radius:12px;font-size:12px}.rank b{color:#0b4a76}
 .note{font-size:10px;color:#98a2b3;line-height:1.5;margin-top:10px}.section-title{font-size:20px;margin:26px 0 12px}
+#region-table th:first-child,
+#region-table td:first-child {
+  text-align: left;
+}
+
+#region-table th:not(:first-child),
+#region-table td:not(:first-child) {
+  text-align: center;
+}
+  .gov-table th:not(:first-child),
+.gov-table td:not(:first-child) {
+  text-align: center;
+}
 </style></head>
 <body>
 
@@ -56,16 +69,7 @@ main{max-width:1280px;margin:auto;padding:24px}.selector{background:#fff;border:
 
 <h2 class="section-title">Persebaran Responden per Wilayah &amp; Instrumen</h2>
 <section class="panel"><p>Tabel ini mempertahankan delapan kuesioner secara terpisah sehingga jumlah responden antar-kuesioner tidak dianggap sebagai responden unik lintas kuesioner.</p><div class="table-wrap"><table id="region-table"></table></div></section>
-#region-table th:first-child,
-#region-table td:first-child {
-  text-align: left;
-}
 
-#region-table th:not(:first-child),
-#region-table td:not(:first-child) {
-  text-align: center;
-}
-  
 <div class="grid">
 <section class="panel"><h2>Peta Sebaran Responden per Provinsi</h2><p id="map-subtitle">—</p>
 <div class="map-wrap"><svg id="map" viewBox="0 0 1180 420" aria-label="Peta skematik Indonesia">
@@ -84,11 +88,7 @@ main{max-width:1280px;margin:auto;padding:24px}.selector{background:#fff;border:
 
 <h2 class="section-title">Sebaran Tingkat Pemerintahan per Instrumen</h2>
 <section class="panel"><div class="table-wrap"><table id="gov-table"></table></div></section>
-#government-table th:not(:first-child),
-#government-table td:not(:first-child) {
-  text-align: center;
-}
-  
+
 <div class="grid">
 <section class="panel"><h2>Komposisi Tingkat Pemerintahan</h2><p id="gov-subtitle">—</p><div id="gov-bars" class="bar-list"></div></section>
 <section class="panel"><h2>Jenis OPD Responden</h2><p id="opd-subtitle">—</p><div id="opd-bars" class="bar-list"></div><div class="note">Untuk Trantibumlinmas, OPD dinormalisasi menjadi BPBD, Satpol PP, Damkar, Satpol PP–Damkar (gabungan), dan Lainnya/Tidak Teridentifikasi. Instrumen lain mengikuti jenis OPD pengampu instrumen.</div></section>
