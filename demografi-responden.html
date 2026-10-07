@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Demografi Responden • Pemantauan dan Evaluasi SPM</title>
+<title>Demografi Responden Kuesioner Monev SPM Tahun 2026</title>
 <style>
 :root{--bg:#f5f7fb;--ink:#172033;--muted:#667085;--line:#e4e7ec;--card:#fff;--navy:#0b4a76;--green:#0f766e;--shadow:0 14px 35px rgba(15,23,42,.08)}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
@@ -38,15 +38,15 @@ main{max-width:1280px;margin:auto;padding:24px}.selector{background:#fff;border:
     <nav class="portal-links">
       <a href="index.html">Beranda</a>
       <a href="isu-tantangan.html">Isu &amp; Tantangan</a>
-      <a href="hasil-kuesioner.html">Hasil Kuesioner</a>
+      <a href="hasil-kuesioner.html">Hasil Kuesioner Monev SPM 2026</a>
       <a href="demografi-responden.html" class="active">Demografi Responden</a>
     </nav>
   </div>
 </header>
 
-<section class="hero"><div class="hero-inner"><span class="eyebrow">Demografi Responden • 8 Instrumen</span><h1>Hasil Pemantauan dan Evaluasi Penerapan SPM di Daerah</h1><p>Dashboard ini menampilkan persebaran responden berdasarkan wilayah, provinsi, tingkat pemerintahan, dan jenis OPD. Seluruh angka berasal dari file rekap jawaban yang diberikan.</p></div></section>
+<section class="hero"><div class="hero-inner"><span class="eyebrow">Demografi Responden Kuesioner Monev SPM Tahun 2026</span><h1>Gambaran Umum Responden Kuesioner Monev SPM</h1><p>Dashboard ini menampilkan persebaran responden berdasarkan wilayah, provinsi, tingkat pemerintahan, dan jenis OPD.</p></div></section>
 <main>
-<section class="selector"><div class="selector-label">Pilih Instrumen untuk Peta &amp; Profil Responden</div><div class="chips" id="inst-chips"></div></section>
+<section class="selector"><div class="selector-label">Pilih Kuesioner untuk Peta &amp; Profil Responden</div><div class="chips" id="inst-chips"></div></section>
 <div class="kpis">
 <div class="kpi"><small>Responden Instrumen</small><b id="k-total">—</b><span id="k-inst">—</span></div>
 <div class="kpi"><small>Provinsi Terwakili</small><b id="k-prov">—</b><span>dengan minimal 1 responden</span></div>
@@ -55,8 +55,17 @@ main{max-width:1280px;margin:auto;padding:24px}.selector{background:#fff;border:
 </div>
 
 <h2 class="section-title">Persebaran Responden per Wilayah &amp; Instrumen</h2>
-<section class="panel"><p>Tabel ini mempertahankan delapan instrumen secara terpisah sehingga jumlah responden antar-instrumen tidak dianggap sebagai responden unik lintas kuesioner.</p><div class="table-wrap"><table id="region-table"></table></div></section>
+<section class="panel"><p>Tabel ini mempertahankan delapan kuesioner secara terpisah sehingga jumlah responden antar-kuesioner tidak dianggap sebagai responden unik lintas kuesioner.</p><div class="table-wrap"><table id="region-table"></table></div></section>
+#region-table th:first-child,
+#region-table td:first-child {
+  text-align: left;
+}
 
+#region-table th:not(:first-child),
+#region-table td:not(:first-child) {
+  text-align: center;
+}
+  
 <div class="grid">
 <section class="panel"><h2>Peta Sebaran Responden per Provinsi</h2><p id="map-subtitle">—</p>
 <div class="map-wrap"><svg id="map" viewBox="0 0 1180 420" aria-label="Peta skematik Indonesia">
@@ -75,7 +84,11 @@ main{max-width:1280px;margin:auto;padding:24px}.selector{background:#fff;border:
 
 <h2 class="section-title">Sebaran Tingkat Pemerintahan per Instrumen</h2>
 <section class="panel"><div class="table-wrap"><table id="gov-table"></table></div></section>
-
+#government-table th:not(:first-child),
+#government-table td:not(:first-child) {
+  text-align: center;
+}
+  
 <div class="grid">
 <section class="panel"><h2>Komposisi Tingkat Pemerintahan</h2><p id="gov-subtitle">—</p><div id="gov-bars" class="bar-list"></div></section>
 <section class="panel"><h2>Jenis OPD Responden</h2><p id="opd-subtitle">—</p><div id="opd-bars" class="bar-list"></div><div class="note">Untuk Trantibumlinmas, OPD dinormalisasi menjadi BPBD, Satpol PP, Damkar, Satpol PP–Damkar (gabungan), dan Lainnya/Tidak Teridentifikasi. Instrumen lain mengikuti jenis OPD pengampu instrumen.</div></section>
