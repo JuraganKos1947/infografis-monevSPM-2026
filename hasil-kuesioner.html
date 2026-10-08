@@ -346,10 +346,8 @@ function regionalAnalysis(c){
     c.kind === "single" ||
     c.kind === "multi" ||
     c.kind === "choice"
-    c.kind === "bars" ){
-    return dominantRegionalAnswers(c);
-  }
-
+    c.kind === "bars" )
+  {return dominantRegionalAnswers(c);}
   return "";
 }
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));}
