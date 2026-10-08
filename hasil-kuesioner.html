@@ -41,6 +41,79 @@ main{max-width:1280px;margin:auto;padding:24px}
 details{margin-top:13px;border-top:1px dashed #eaecf0;padding-top:10px}summary{font-size:11px;color:#667085;cursor:pointer;font-weight:800}details p,details li{font-size:11px;line-height:1.5;color:#667085}details ul{padding-left:18px}
 .multi-note{font-size:10px;color:#98a2b3;margin-top:8px}.empty{background:#fff;border:1px dashed #d0d5dd;border-radius:20px;padding:30px;text-align:center;color:#667085}
 .source-note{margin:28px 0 10px;background:#eef4ff;border:1px solid #dbeafe;color:#475467;border-radius:16px;padding:13px 15px;font-size:11px;line-height:1.55}
+.regional-summary{
+  margin-top:18px;
+  padding-top:14px;
+  border-top:1px solid #eaecf0;
+}
+
+.regional-summary details{
+  margin:0;
+}
+
+.regional-summary summary{
+  cursor:pointer;
+  font-size:12px;
+  font-weight:800;
+  color:#475467;
+  list-style:none;
+}
+
+.regional-summary summary::-webkit-details-marker{
+  display:none;
+}
+
+.regional-summary summary::before{
+  content:"▶";
+  margin-right:5px;
+  font-size:10px;
+  color:#667085;
+}
+
+.regional-summary details[open] summary::before{
+  content:"▼";
+}
+
+.region-answer-list{
+  display:grid;
+  gap:7px;
+  margin-top:12px;
+}
+
+.region-answer-row{
+  display:grid;
+  grid-template-columns:155px 1fr 70px;
+  gap:12px;
+  align-items:start;
+  font-size:12px;
+  line-height:1.4;
+}
+
+.region-answer-name{
+  font-weight:800;
+  color:#344054;
+}
+
+.region-answer-value{
+  color:#667085;
+}
+
+.region-answer-pct{
+  text-align:right;
+  font-weight:800;
+  color:#344054;
+}
+
+@media(max-width:700px){
+  .region-answer-row{
+    grid-template-columns:1fr;
+    gap:2px;
+  }
+
+  .region-answer-pct{
+    text-align:left;
+  }
+}
 </style>
 </head>
 <body>
@@ -90,10 +163,196 @@ const RESULTS={"Umum":{"Semua Wilayah":{"respondents":266,"cards":[{"kind":"cate
 const LABELS={"Umum": "Umum", "Pendidikan": "Pendidikan", "Kesehatan": "Kesehatan", "PU": "Pekerjaan Umum", "PR": "Perumahan Rakyat", "Trantibumlinmas": "Trantibumlinmas", "Sosial": "Sosial", "Inspektorat": "Inspektorat"};
 const ACCENTS={"Umum": "#0b4a76", "Pendidikan": "#2563eb", "Kesehatan": "#059669", "PU": "#0284c7", "PR": "#d97706", "Trantibumlinmas": "#7c3aed", "Sosial": "#be185d", "Inspektorat": "#475467"};
 const REGIONS=["Semua Wilayah", "Sumatera", "Jawa", "Kalimantan", "Bali–Nusa Tenggara", "Sulawesi", "Maluku", "Papua"];
+const ANALYSIS_REGIONS = ["Sumatera","Jawa","Kalimantan","Bali-Nusa Tenggara","Sulawesi","Maluku","Papua"];
 const INSTRUMENTS=["Umum", "Pendidikan", "Kesehatan", "PU", "PR", "Trantibumlinmas", "Sosial", "Inspektorat"];
 let activeInstrument="Umum";
 let activeRegion="Semua Wilayah";
+function findMatchingCard(region, sourceCard){
+  const pack = RESULTS[activeInstrument]?.[region];
 
+  if(!pack || !pack.cards) return null;
+
+  return pack.cards.find(c =>
+    (sourceCard.question && c.question === sourceCard.question) ||
+    (sourceCard.title && c.title === sourceCard.title)
+  );
+}
+function formatPct(v){
+  if(v == null || isNaN(v)) return "—";
+
+  return Number(v)
+    .toFixed(1)
+    .replace(".0","") + "%";
+}
+
+function dominantRegionalAnswers(sourceCard){
+
+  const rows = ANALYSIS_REGIONS.map(region => {
+
+    const c = findMatchingCard(region, sourceCard);
+
+    if(!c || !c.items || !c.items.length){
+      return {
+        region,
+        answer:"Data tidak tersedia",
+        pct:null
+      };
+    }
+
+    const validItems = c.items.filter(x =>
+      x &&
+      x.label &&
+      x.label.toLowerCase() !== "lainnya"
+    );
+
+    if(!validItems.length){
+      return {
+        region,
+        answer:"Data tidak tersedia",
+        pct:null
+      };
+    }
+
+    const dominant = validItems.reduce((a,b) => {
+
+      const aVal =
+        a.pct ??
+        a.percentage ??
+        a.percent ??
+        a.count ??
+        0;
+
+      const bVal =
+        b.pct ??
+        b.percentage ??
+        b.percent ??
+        b.count ??
+        0;
+
+      return bVal > aVal ? b : a;
+
+    });
+
+    const pct =
+      dominant.pct ??
+      dominant.percentage ??
+      dominant.percent ??
+      null;
+
+    return {
+      region,
+      answer:dominant.label,
+      pct
+    };
+
+  });
+
+
+  return `
+    <div class="regional-summary">
+
+      <details open>
+
+        <summary>Jawaban dominan per wilayah</summary>
+
+        <div class="region-answer-list">
+
+          ${rows.map(r => `
+            <div class="region-answer-row">
+
+              <div class="region-answer-name">
+                ${esc(r.region)}
+              </div>
+
+              <div class="region-answer-value">
+                ${esc(r.answer)}
+              </div>
+
+              <div class="region-answer-pct">
+                ${r.pct == null
+                  ? "—"
+                  : formatPct(r.pct)}
+              </div>
+
+            </div>
+          `).join("")}
+
+        </div>
+
+      </details>
+
+    </div>
+  `;
+}
+function regionalLikert(sourceCard){
+
+  const rows = ANALYSIS_REGIONS.map(region => {
+
+    const c = findMatchingCard(region, sourceCard);
+
+    return {
+      region,
+      avg: c?.avg ?? null,
+      max: c?.max ?? sourceCard.max ?? 5
+    };
+
+  });
+
+  return `
+    <div class="regional-summary">
+
+      <details open>
+
+        <summary>Rata-rata per wilayah</summary>
+
+        <div class="region-answer-list">
+
+          ${rows.map(r => `
+            <div class="region-answer-row">
+
+              <div class="region-answer-name">
+                ${esc(r.region)}
+              </div>
+
+              <div class="region-answer-value">
+                Rata-rata skor
+              </div>
+
+              <div class="region-answer-pct">
+                ${
+                  r.avg == null
+                    ? "—"
+                    : r.avg.toFixed(2) + " / " + r.max
+                }
+              </div>
+
+            </div>
+          `).join("")}
+
+        </div>
+
+      </details>
+
+    </div>
+  `;
+}
+function regionalAnalysis(c){
+
+  if(c.kind === "likert"){
+    return regionalLikert(c);
+  }
+
+  if(
+    c.kind === "single" ||
+    c.kind === "multi" ||
+    c.kind === "choice"
+    c.kind === "bars"
+  ){
+    return dominantRegionalAnswers(c);
+  }
+
+  return "";
+}
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));}
 function slug(s){return String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
 function renderChips(){
@@ -129,7 +388,7 @@ function card(c){
     return `<article class="chart-card" style="--accent:${accent}"><h3>${esc(c.title)}</h3><div class="meta">Rata-rata per aspek</div><div class="likert-group">${rows}</div><details><summary>Lihat pertanyaan asli</summary><ul>${c.questions.map(q=>`<li>${esc(q)}</li>`).join("")}</ul></details></article>`;
   }
   let body=c.kind==="likert"?likert(c):bars(c.items,c.kind==="multi");
-  return `<article class="chart-card" style="--accent:${accent}"><h3>${esc(c.title)}</h3><div class="meta">n = ${c.n} jawaban valid</div>${body}${details(c.question)}</article>`;
+  return `<article class="chart-card" style="--accent:${accent}"><h3>${esc(c.title)}</h3><div class="meta">n = ${c.n} jawaban valid</div>${body}${regionalAnalysis(c)}${details(c.question)}</article>`;
 }
 function renderAll(){
   renderChips();
